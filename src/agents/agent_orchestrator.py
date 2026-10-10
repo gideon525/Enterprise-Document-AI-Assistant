@@ -79,13 +79,22 @@ Remove unsupported claims and use only the retrieved evidence.
             item["source"] for item in evidence
         )
     )
-
+    
+        # Collect unique document-chunk citation references.
+    citations = list(
+        dict.fromkeys(
+            item.get("citation_id", f"{item['source']}#chunk-{item.get('chunk_index')}")
+            for item in evidence
+        )
+    )
+    
     return {
         "answer": draft_answer,
         "is_valid": validation["is_valid"],
         "validation_feedback": validation["feedback"],
         "retrieval_plan": retrieval_plan,
         "sources": sources,
+        "citations": citations,
         "evidence": evidence,
         "revision_performed": revision_performed,
     }

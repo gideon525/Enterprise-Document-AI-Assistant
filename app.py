@@ -84,6 +84,13 @@ if st.button("Ask"):
                 for source in result["sources"]:
                     st.write(f"- {source}")
 
+            # Show the specific document chunks retrieved as evidence.
+            if result.get("citations"):
+                st.subheader("Retrieved Evidence Citations")
+
+                for citation in result["citations"]:
+                    st.write(f"- {citation}")
+            
             # Show whether the agents performed a corrective revision.
             if result.get("revision_performed"):
                 st.info(

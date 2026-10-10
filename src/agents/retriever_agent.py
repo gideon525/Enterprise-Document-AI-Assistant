@@ -33,12 +33,16 @@ Retrieval plan:
         distances,
     ):
         evidence.append(
-            {
-                "content": document,
-                "source": metadata.get("source", "Unknown"),
-                "chunk_index": metadata.get("chunk_index"),
-                "distance": distance,
-            }
-        )
+    {
+        "content": document,
+        "source": metadata.get("source", "Unknown"),
+        "chunk_index": metadata.get("chunk_index"),
+        "citation_id": (
+            f"{metadata.get('source', 'Unknown')}"
+            f"#chunk-{metadata.get('chunk_index')}"
+        ),
+        "distance": distance,
+    }
+)
 
     return evidence
