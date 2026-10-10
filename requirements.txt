@@ -1,0 +1,9 @@
+streamlit
+pypdf
+pandas
+openpyxl
+python-dotenv
+chromadb
+sentence-transformers
+torchvision
+google-genai
