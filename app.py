@@ -67,7 +67,53 @@ if st.button("Ask"):
 
             st.subheader("Answer")
             st.write(result["answer"])
+            
+                        # Display the Planner Agent's retrieval strategy.
+            with st.expander("🧠 Agent Execution Trace", expanded=False):
+                st.markdown("**Step 1: Planner Agent**")
+                st.write(
+                    result.get(
+                        "retrieval_plan",
+                        "No retrieval plan available."
+                    )
+                )
 
+                            # Show the evidence retrieved from the vector database.
+                st.markdown("**Step 2: Retriever Agent**")
+
+                evidence = result.get("evidence", [])
+
+                st.write(f"Retrieved {len(evidence)} evidence chunks.")
+
+                for item in evidence:
+                    st.markdown(
+                        f"**Source:** {item.get('citation_id', 'Unknown')}"
+                    )
+                    st.caption(item.get("content", "No content available."))
+                            # Show the Validator Agent's final assessment.
+                st.markdown("**Step 3: Validator Agent**")
+
+                if result.get("is_valid"):
+                    st.success("Validation status: VALID")
+                else:
+                    st.warning("Validation status: INVALID")
+
+                st.markdown("**Validator Feedback:**")
+                st.write(
+                    result.get(
+                        "validation_feedback",
+                        "No validation feedback available."
+                    )
+                )
+
+                # Indicate whether the Reasoner revised its answer.
+                st.markdown("**Answer Revision:**")
+
+                if result.get("revision_performed"):
+                    st.info("The Reasoner Agent revised the initial answer.")
+                else:
+                    st.write("No answer revision was required.")
+                    
             # Show validation status.
             if result["is_valid"]:
                 st.success("Answer validated against retrieved evidence.")
