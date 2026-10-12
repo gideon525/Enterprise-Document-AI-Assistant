@@ -10,6 +10,26 @@
 
 ---
 
+## 📸 Application Screenshots
+
+The screenshots below demonstrate the Enterprise Document AI Assistant processing a synthetic document, generating an evidence-grounded answer, and displaying its multi-agent retrieval workflow.
+
+### Dashboard Overview
+
+The Streamlit dashboard supports document uploads, natural-language questions, and AI-generated answers using Google Gemini and Retrieval-Augmented Generation (RAG).
+
+![Enterprise Document AI Assistant Dashboard](screenshots/dashboard_overview.png)
+
+### Agent Execution Trace
+
+The execution trace provides visibility into the Planner Agent's retrieval strategy and the Retriever Agent's supporting document evidence.
+
+![Enterprise Document AI Assistant Agent Execution Trace](screenshots/agent_execution_trace.png)
+
+_Screenshots were captured using synthetic demonstration data._
+
+---
+
 ## 1. Project Overview
 
 The Enterprise Document AI Assistant is an intelligent document question-answering application that combines Retrieval-Augmented Generation (RAG), semantic search, and a multi-agent AI workflow.
